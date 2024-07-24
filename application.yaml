@@ -4,14 +4,17 @@ metadata:
   name: my-argo-app
   namespace: argocd
 spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/vinver1981/argocd.git
+    targetRevision: main  # Branch, tag, or commit SHA to deploy
+    path: .  # Optional: path within the repo where the manifests are located
+  #project: default  # Argo CD project name
+  
   destination:
     server: https://kubernetes.default.svc
     namespace: default
-  source:
-    repoURL: https://github.com/vinver1981/argocd.git
-    #path: path/to/your/application  # Optional: path within the repo where the manifests are located
-    targetRevision: main  # Branch, tag, or commit SHA to deploy
-  project: default  # Argo CD project name
   syncPolicy:
     automated:
       prune: true  # Optional: Enable pruning of resources not in Git repository
