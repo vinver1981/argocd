@@ -8,8 +8,8 @@ spec:
 
   source:
     repoURL: https://github.com/vinver1981/argocd.git
-    targetRevision: main  # Branch, tag, or commit SHA to deploy
-    path: /  # Optional: path within the repo where the manifests are located
+    targetRevision: HEAD  # Branch, tag, or commit SHA to deploy
+    path: .  # Optional: path within the repo where the manifests are located
   #project: default  # Argo CD project name
   
   destination:
