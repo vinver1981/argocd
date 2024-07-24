@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-argo-app
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  source:
+    repoURL: https://github.com/vinver1981/argocd.git
+    #path: path/to/your/application  # Optional: path within the repo where the manifests are located
+    targetRevision: main  # Branch, tag, or commit SHA to deploy
+  project: default  # Argo CD project name
+  syncPolicy:
+    automated:
+      prune: true  # Optional: Enable pruning of resources not in Git repository
+    syncOptions:
+      - CreateNamespace=true  # Optional: Create namespace if it doesn't exist
