@@ -15,8 +15,13 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: default
+
   syncPolicy:
-    automated:
-      prune: true  # Optional: Enable pruning of resources not in Git repository
+    
     syncOptions:
-      - CreateNamespace=true  # Optional: Create namespace if it doesn't exist
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+
